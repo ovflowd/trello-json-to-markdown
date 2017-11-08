@@ -11,7 +11,7 @@ var h4 = '####';
 var h5 = '#####';
 var h6 = '######';
 var br = '\n';
-var tab = '&nbsp;&nbsp;&nbsp;&nbsp;';
+var tab = '\t';
 
 var currentWaitTime = 0;
 var DELTA_WAIT_TIME = 150; //Wait 150 milliseconds between request so we're not attacking Trello's API
@@ -52,7 +52,7 @@ function createMarkdowns() {
         var cardDirectory = boardName + '-cards/';
         //Full card ID = boardName-cardNumber
         var cardPrefix = boardName + '-';
-        var tableOfContentsFile = boardDirectory + boardName + '.md';
+        var tableOfContentsFile = boardDirectory + 'readme.md';
 
         //Set the title of the table of contents the the board name (and link the board name to the board)
         var tableOfContents = h1 + '[' + boardName + '](' + boardShortUrl + ')' + br;
@@ -349,7 +349,7 @@ function createCardMarkdown(card, cardPrefix, cardDirectory, boardDirectory, ret
               info = 'Unknown action';
           }
           cardMd += h5 + tab + tab + userFullName + ' - *' + date + '*' + br;
-          cardMd += tab + tab + '`' + br;
+          cardMd += '`' + br;
           cardMd += info + br;
           if (!attachmentAdded) {
             cardMd += '`' + br;
