@@ -38,7 +38,7 @@ if (numDays && !isNaN(numDays) && numDays > 0) {
 function createMarkdowns() {
 
   config.boards.forEach(function (boardId) {
-    trello.get('/1/boards/' + boardId + '?cards=all&lists=all&members=all&member_fields=all&checklists=all&fields=all', function (error, boardJSON) {
+    trello.get('/1/boards/' + boardId, { cards: "all", lists: "all", members: "all", member_fields: "all", checklists: "all", fields: "all"}, function (error, boardJSON) {
       if (error) {
         console.log(error);
       }
@@ -107,7 +107,7 @@ function createMarkdowns() {
 
 function createCardMarkdown(card, cardPrefix, cardDirectory, boardDirectory, retry) {
   var id = card.id;
-  trello.get('/1/card/' + id + '?actions=all&actions_limit=1000&members=true&member_fields=all&checklists=all&checklist_fields=all&attachments=true', function (error, cardJSON) {
+  trello.get('/1/card/' + id, { actions: "all", actions_limit: 1000, members: true, member_fields: "all", checklists: "all", checklist_fields: "all", attachments: true}, function (error, cardJSON) {
     if (error) {
       if (retry) {
         console.log('An error has occurred when gathering actions for ' + cardPrefix + card.idShort);

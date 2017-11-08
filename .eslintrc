@@ -4,11 +4,6 @@
     "node": true,
     "mocha": true
   },
-  "globals": ["module"],
-  // Note:
-  //  0 = ignore rule
-  //  1 = warn
-  //  2 = error
   "rules": {
     "no-unused-expressions": 0,
     "no-console": 0,
@@ -20,13 +15,17 @@
     "no-underscore-dangle": 0,
     "no-use-before-define": [2, "nofunc"],
     "brace-style": [2, "1tbs"],
-    "comma-dangle": "never",
+    "comma-dangle": [2, "never"],
     "handle-callback-err": [2, "^.*err" ],
     "new-cap": 0,
-    "space-after-keywords": 2,
+    "keyword-spacing": ["error", {
+      "after": true 
+    }],
     "space-before-blocks": 2,
-    "space-before-function-paren": {"anonymous": "always", "named": "never"},
-    "space-in-brackets": [2, "never"],
+    "space-before-function-paren": [2, {
+      "anonymous": "always",
+      "named": "never"
+    }],
     "space-in-parens": 0,
     "strict": 0,
     "quotes": 0
